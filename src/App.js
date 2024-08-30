@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter , Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Forgotpassword from './pages/Forgotpassword';
+import PageNotFound from './pages/PageNotFound';
+import Dashhboard from './pages/backend/Dashhboard';
+import Product from './pages/backend/Product';
+import Report from './pages/backend/Report';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' exact={true} element={<Login />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/forgotpassword' element={<Forgotpassword />} />
+                <Route path='/*' element={<PageNotFound />} />
+
+                <Route path='/backend/dashboard' Component={Dashhboard} />
+                <Route path='/backend/product' Component={Product} />
+                <Route path='/backend/report' Component={Report} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
